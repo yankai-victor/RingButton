@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="borderWidth" format="dimension"/>
+    <attr name="borderColor" format="color"/>
+    <declare-styleable name="ringButton">
+        <attr name="borderWidth"/>
+        <attr name="borderColor"/>
+        <attr name="circleColor" format="color"/>
+        <attr name="textColor" format="color"/>
+        <attr name="pressedColor" format="color"/>
+        <attr name="dividerColor" format="color"/>
+        <attr name="dividerUpColor" format="color"/>
+        <attr name="dividerShadowColor" format="color"/>
+        <attr name="textSize" format="dimension"/>
+        <attr name="upDrawable" format="reference"/>
+        <attr name="downDrawable" format="reference"/>
+        <attr name="upText" format="string"/>
+        <attr name="downText" format="string"/>
+        <attr name="dividerSize" format="dimension"/>
+        <attr name="baseColor" format="color"/>
+
+    </declare-styleable>
+</resources>
