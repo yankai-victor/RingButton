@@ -1,3 +1,3 @@
 RingButton
 ================
-(./image/Screenshot.png)
+![](./image/Screenshot.png)
