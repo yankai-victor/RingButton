@@ -33,19 +33,20 @@ public class RingButton extends View {
     private int centerX;
     private int outerRadius;
 
-    private Paint circlePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-    private Paint borderPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+    private Paint mainPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     private Paint textPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-    private Paint pressPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-    private Paint dividerPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 
     private boolean upPressed = false;
     private boolean downPressed = false;
 
     private String upText = "up";
     private String downText = "down";
+    private int circleColor = Color.WHITE;
+    private int borderColor = Color.parseColor(BASE_COLOR);
+    private int pressedColor = Color.LTGRAY;
+    private int borderWidth;
     private int dividerColor = 0;
-    private int dividerUpColor = 0;
+    private int dividerHighLightColor = 0;
     private int dividerShadowColor = 0;
     private int dividerSize = DIVIDE_SIZE;
     private Bitmap upBitmap;
@@ -82,45 +83,54 @@ public class RingButton extends View {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        canvas.drawCircle(centerX, centerY, outerRadius, circlePaint);
+        mainPaint.setStyle(Paint.Style.FILL);
+        mainPaint.setColor(circleColor);
+        canvas.drawCircle(centerX, centerY, outerRadius, mainPaint);
 
+        mainPaint.setColor(pressedColor);
+        mainPaint.setStyle(Paint.Style.FILL);
         if (upPressed) {
-            canvas.drawArc(pressedRect, 180, 180, true, pressPaint);
+            canvas.drawArc(pressedRect, 180, 180, true, mainPaint);
         }
         if (downPressed) {
-            canvas.drawArc(pressedRect, 0, 180, true, pressPaint);
+            canvas.drawArc(pressedRect, 0, 180, true, mainPaint);
         }
 
-        // 绘制上方按钮文字
+        // draw upText
         if (!TextUtils.isEmpty(upText)) {
             canvas.drawText(upText, centerX - upRect.width() / 2, centerY - textDivider, textPaint);
         }
-        // 绘制上方按钮图片
+        // draw upDrawable
         if (null != upBitmap) {
             canvas.drawBitmap(upBitmap, centerX - upBitmap.getWidth() / 2, centerY - upRect.height() - upBitmap.getHeight() - (int) (textDivider * 1.5), textPaint);
         }
-        // 绘制下方按钮图片
+        //draw downDrawable
         int downBitmapHeight = 0;
         if (null != downBitmap) {
             canvas.drawBitmap(downBitmap, centerX - downBitmap.getWidth() / 2, centerY + textDivider / 2, textPaint);
             downBitmapHeight = downBitmap.getHeight();
         }
-        // 绘制下方按钮文字
+        // draw downText
         if (!TextUtils.isEmpty(downText)) {
             canvas.drawText(downText, centerX - downRect.width() / 2, centerY + downBitmapHeight + upRect.height() + textDivider, textPaint);
         }
 
-        // 绘制上分割线
-        dividerPaint.setColor(dividerUpColor);
-        canvas.drawLine(20, centerY - dividerSize, centerX * 2 - 20, centerY - dividerSize, dividerPaint);
-        // 绘制分割线
-        dividerPaint.setColor(dividerColor);
-        canvas.drawLine(20, centerY, centerX * 2 - 20, centerY, dividerPaint);
-        // 绘制下分割线
-        dividerPaint.setColor(dividerShadowColor);
-        canvas.drawLine(20, centerY + dividerSize, centerX * 2 - 20, centerY + dividerSize, dividerPaint);
-        // 绘制外围空心圆
-        canvas.drawCircle(centerX, centerY, outerRadius - 20, borderPaint);
+        mainPaint.setStrokeWidth(dividerSize);
+        // draw high light divider
+        mainPaint.setColor(dividerHighLightColor);
+        canvas.drawLine(20, centerY - dividerSize, centerX * 2 - 20, centerY - dividerSize, mainPaint);
+        // draw divider
+        mainPaint.setColor(dividerColor);
+        canvas.drawLine(20, centerY, centerX * 2 - 20, centerY, mainPaint);
+        // draw shadow divider
+        mainPaint.setColor(dividerShadowColor);
+        canvas.drawLine(20, centerY + dividerSize, centerX * 2 - 20, centerY + dividerSize, mainPaint);
+
+        // draw border
+        mainPaint.setColor(borderColor);
+        mainPaint.setStrokeWidth(borderWidth);
+        mainPaint.setStyle(Paint.Style.STROKE);
+        canvas.drawCircle(centerX, centerY, outerRadius - 20, mainPaint);
         super.onDraw(canvas);
     }
 
@@ -172,13 +182,10 @@ public class RingButton extends View {
         setClickable(true);
 
         textDivider = dpToPx(context, TEXT_DIVIDER);
-
-        int circleColor = Color.WHITE;
-        int borderColor = Color.parseColor(BASE_COLOR);
-        int borderWidth = dpToPx(context, BORDER_WIDTH);
+        borderWidth = dpToPx(context, BORDER_WIDTH);
         int textSize = dpToPx(context, TEXT_SIZE);
         int textColor = Color.parseColor(BASE_COLOR);
-        int pressedColor = Color.LTGRAY;
+
         if (null != attrs) {
             TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.ringButton);
             int baseColor = typedArray.getColor(R.styleable.ringButton_baseColor, Color.parseColor(BASE_COLOR));
@@ -188,7 +195,7 @@ public class RingButton extends View {
             textSize = typedArray.getDimensionPixelSize(R.styleable.ringButton_textSize, dpToPx(context, TEXT_SIZE));
             textColor = typedArray.getColor(R.styleable.ringButton_textColor, baseColor);
             dividerColor = typedArray.getColor(R.styleable.ringButton_dividerColor, baseColor);
-            dividerUpColor = typedArray.getColor(R.styleable.ringButton_dividerUpColor, Color.parseColor("#dddddd"));
+            dividerHighLightColor = typedArray.getColor(R.styleable.ringButton_dividerHighLightColor, Color.parseColor("#dddddd"));
             dividerShadowColor = typedArray.getColor(R.styleable.ringButton_dividerShadowColor, Color.WHITE);
             pressedColor = typedArray.getColor(R.styleable.ringButton_pressedColor, Color.parseColor("#dddddd"));
             int upDrawable = typedArray.getResourceId(R.styleable.ringButton_upDrawable, -1);
@@ -211,13 +218,6 @@ public class RingButton extends View {
             }
         }
 
-        circlePaint.setStyle(Paint.Style.FILL);
-        circlePaint.setColor(circleColor);
-
-        borderPaint.setColor(borderColor);
-        borderPaint.setStrokeWidth(borderWidth);
-        borderPaint.setStyle(Paint.Style.STROKE);
-
         textPaint.setStyle(Paint.Style.FILL);
         textPaint.setTextSize(textSize);
         textPaint.setColor(textColor);
@@ -228,10 +228,6 @@ public class RingButton extends View {
             textPaint.getTextBounds(downText, 0, downText.length(), downRect);
         }
 
-        pressPaint.setColor(pressedColor);
-        pressPaint.setStyle(Paint.Style.FILL);
-
-        dividerPaint.setStrokeWidth(dividerSize);
     }
 
     public int dpToPx(Context context, float dpVal) {
