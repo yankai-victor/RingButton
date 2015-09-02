@@ -8,6 +8,12 @@ Supported on API Level 7 and above.
 
 Usage
 ====
+gradle
+
+```
+compile 'com.victor.ringbutton:lib:1.0'
+```
+
 Add RingButton to your xml and change the style with its attrs.
 
 ```

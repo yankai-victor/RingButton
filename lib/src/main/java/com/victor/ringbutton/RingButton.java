@@ -25,7 +25,7 @@ public class RingButton extends View {
     private static final String BASE_COLOR = "#54D2E4";
     private static final int PRESS_RADIUS = 20;
     private static final int TEXT_SIZE = 22;
-    private static final int BORDER_WIDTH = 2;
+    private static final int RING_WIDTH = 2;
     private static final int TEXT_DIVIDER = 10;
     private static final int DIVIDE_SIZE = 2;
 
@@ -182,7 +182,7 @@ public class RingButton extends View {
         setClickable(true);
 
         textDivider = dpToPx(context, TEXT_DIVIDER);
-        borderWidth = dpToPx(context, BORDER_WIDTH);
+        borderWidth = dpToPx(context, RING_WIDTH);
         int textSize = dpToPx(context, TEXT_SIZE);
         int textColor = Color.parseColor(BASE_COLOR);
 
@@ -190,8 +190,8 @@ public class RingButton extends View {
             TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.ringButton);
             int baseColor = typedArray.getColor(R.styleable.ringButton_baseColor, Color.parseColor(BASE_COLOR));
             circleColor = typedArray.getColor(R.styleable.ringButton_circleColor, Color.parseColor("#f2f2f2"));
-            borderColor = typedArray.getColor(R.styleable.ringButton_borderColor, baseColor);
-            borderWidth = typedArray.getDimensionPixelSize(R.styleable.ringButton_borderWidth, dpToPx(context, dpToPx(context, BORDER_WIDTH)));
+            borderColor = typedArray.getColor(R.styleable.ringButton_ringColor, baseColor);
+            borderWidth = typedArray.getDimensionPixelSize(R.styleable.ringButton_ringWidth, dpToPx(context, dpToPx(context, RING_WIDTH)));
             textSize = typedArray.getDimensionPixelSize(R.styleable.ringButton_textSize, dpToPx(context, TEXT_SIZE));
             textColor = typedArray.getColor(R.styleable.ringButton_textColor, baseColor);
             dividerColor = typedArray.getColor(R.styleable.ringButton_dividerColor, baseColor);
