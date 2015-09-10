@@ -2,20 +2,20 @@
 <resources>
 
     <declare-styleable name="ringButton">
-        <attr name="ringWidth" format="dimension" />
-        <attr name="ringColor" format="color" />
-        <attr name="circleColor" format="color"/>
-        <attr name="textColor" format="color"/>
-        <attr name="pressedColor" format="color"/>
-        <attr name="dividerColor" format="color"/>
-        <attr name="dividerHighLightColor" format="color"/>
-        <attr name="dividerShadowColor" format="color"/>
-        <attr name="textSize" format="dimension"/>
-        <attr name="upDrawable" format="reference"/>
-        <attr name="downDrawable" format="reference"/>
-        <attr name="upText" format="string"/>
-        <attr name="downText" format="string"/>
-        <attr name="dividerSize" format="dimension"/>
-        <attr name="baseColor" format="color"/>
+        <attr name="ringbutton_ringWidth" format="dimension" />
+        <attr name="ringbutton_ringColor" format="color" />
+        <attr name="ringbutton_circleColor" format="color" />
+        <attr name="ringbutton_textColor" format="color" />
+        <attr name="ringbutton_pressedColor" format="color" />
+        <attr name="ringbutton_dividerColor" format="color" />
+        <attr name="ringbutton_dividerHighLightColor" format="color" />
+        <attr name="ringbutton_dividerShadowColor" format="color" />
+        <attr name="ringbutton_textSize" format="dimension" />
+        <attr name="ringbutton_upDrawable" format="reference" />
+        <attr name="ringbutton_downDrawable" format="reference" />
+        <attr name="ringbutton_upText" format="string" />
+        <attr name="ringbutton_downText" format="string" />
+        <attr name="ringbutton_dividerSize" format="dimension" />
+        <attr name="ringbutton_baseColor" format="color" />
     </declare-styleable>
 </resources>

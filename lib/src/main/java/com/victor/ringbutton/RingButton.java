@@ -188,21 +188,21 @@ public class RingButton extends View {
 
         if (null != attrs) {
             TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.ringButton);
-            int baseColor = typedArray.getColor(R.styleable.ringButton_baseColor, Color.parseColor(BASE_COLOR));
-            circleColor = typedArray.getColor(R.styleable.ringButton_circleColor, Color.parseColor("#f2f2f2"));
-            borderColor = typedArray.getColor(R.styleable.ringButton_ringColor, baseColor);
-            borderWidth = typedArray.getDimensionPixelSize(R.styleable.ringButton_ringWidth, dpToPx(context, dpToPx(context, RING_WIDTH)));
-            textSize = typedArray.getDimensionPixelSize(R.styleable.ringButton_textSize, dpToPx(context, TEXT_SIZE));
-            textColor = typedArray.getColor(R.styleable.ringButton_textColor, baseColor);
-            dividerColor = typedArray.getColor(R.styleable.ringButton_dividerColor, baseColor);
-            dividerHighLightColor = typedArray.getColor(R.styleable.ringButton_dividerHighLightColor, Color.parseColor("#dddddd"));
-            dividerShadowColor = typedArray.getColor(R.styleable.ringButton_dividerShadowColor, Color.WHITE);
-            pressedColor = typedArray.getColor(R.styleable.ringButton_pressedColor, Color.parseColor("#dddddd"));
-            int upDrawable = typedArray.getResourceId(R.styleable.ringButton_upDrawable, -1);
-            int downDrawable = typedArray.getResourceId(R.styleable.ringButton_downDrawable, -1);
-            upText = typedArray.getString(R.styleable.ringButton_upText);
-            downText = typedArray.getString(R.styleable.ringButton_downText);
-            dividerSize = typedArray.getDimensionPixelSize(R.styleable.ringButton_dividerSize, dpToPx(context, DIVIDE_SIZE));
+            int baseColor = typedArray.getColor(R.styleable.ringButton_ringbutton_baseColor, Color.parseColor(BASE_COLOR));
+            circleColor = typedArray.getColor(R.styleable.ringButton_ringbutton_circleColor, Color.parseColor("#f2f2f2"));
+            borderColor = typedArray.getColor(R.styleable.ringButton_ringbutton_ringColor, baseColor);
+            borderWidth = typedArray.getDimensionPixelSize(R.styleable.ringButton_ringbutton_ringWidth, dpToPx(context, dpToPx(context, RING_WIDTH)));
+            textSize = typedArray.getDimensionPixelSize(R.styleable.ringButton_ringbutton_textSize, dpToPx(context, TEXT_SIZE));
+            textColor = typedArray.getColor(R.styleable.ringButton_ringbutton_textColor, baseColor);
+            dividerColor = typedArray.getColor(R.styleable.ringButton_ringbutton_dividerColor, baseColor);
+            dividerHighLightColor = typedArray.getColor(R.styleable.ringButton_ringbutton_dividerHighLightColor, Color.parseColor("#dddddd"));
+            dividerShadowColor = typedArray.getColor(R.styleable.ringButton_ringbutton_dividerShadowColor, Color.WHITE);
+            pressedColor = typedArray.getColor(R.styleable.ringButton_ringbutton_pressedColor, Color.parseColor("#dddddd"));
+            int upDrawable = typedArray.getResourceId(R.styleable.ringButton_ringbutton_upDrawable, -1);
+            int downDrawable = typedArray.getResourceId(R.styleable.ringButton_ringbutton_downDrawable, -1);
+            upText = typedArray.getString(R.styleable.ringButton_ringbutton_upText);
+            downText = typedArray.getString(R.styleable.ringButton_ringbutton_downText);
+            dividerSize = typedArray.getDimensionPixelSize(R.styleable.ringButton_ringbutton_dividerSize, dpToPx(context, DIVIDE_SIZE));
             typedArray.recycle();
 
             if (upDrawable > 0) {
