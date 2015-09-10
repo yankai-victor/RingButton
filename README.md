@@ -11,7 +11,7 @@ Usage
 gradle
 
 ```
-compile 'com.victor.ringbutton:lib:1.0'
+compile 'com.victor.ringbutton:lib:1.0.1'
 ```
 
 Add RingButton to your xml and change the style with its attrs.
