@@ -10,13 +10,13 @@ Usage
 ====
 gradle
 
-```
+```groovy
 compile 'com.victor.ringbutton:lib:1.0.1'
 ```
 
 Add RingButton to your xml and change the style with its attrs.
 
-```
+```xml
   <com.victor.ringbutton.RingButton
         android:id="@+id/ringButton"
         app:upText="Take Photo"
@@ -31,7 +31,7 @@ Add RingButton to your xml and change the style with its attrs.
 
 Set the clicklistener to RingButton.
 
-```
+```java
  ringButton.setOnClickListener(new RingButton.OnClickListener() {
             @Override
             public void clickUp() {
